@@ -23,7 +23,7 @@ const app = Vue.createApp({
     },
 
     async mounted() {
-        this.darkMode = localStorage.getItem('darkMode') === 'true' ? true : false;
+        this.darkMode = localStorage.getItem('darkMode') === 'false' ? true : false;
         this.applyTheme();
 
         await this.getLanguages();
@@ -366,7 +366,7 @@ const app = Vue.createApp({
 
         downloadCsv() {
             console.log(this.alliance_players);
-            csvData = [["rang", "points", "ID Joueur", "Nom Joueur", "ID Alliance", "Nom Alliance"].join(";")];
+            csvData = [["Rang", "Punkte", "Spieler ID", "Spielername", "Allianz ID", "Allianzname"].join(";")];
             for (player of this.alliance_players) {
                 csvData.push([player[0], player[1], player[2].OID, player[2].N, player[2].AID, player[2].AN].join(";"))
             }

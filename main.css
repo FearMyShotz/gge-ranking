@@ -481,9 +481,10 @@ body.light-mode #table tbody tr:nth-child(1) {
 }
 
 #table tbody tr:nth-child(2) {
-    background: #71FCAA;
+    background: #FFA500;
     color: var(--fullDarkGrey);
 }
+
 body.light-mode #table tbody tr:nth-child(2) {
         color: var(--lightBg);
 }

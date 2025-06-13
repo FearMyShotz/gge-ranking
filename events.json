@@ -433,26 +433,8 @@
                 }
             ]
         },
-        "dialog_title_gachadeco2x2": {
-            "id": 80,
-            "categories": [
-                {
-                    "id": 1,
-                    "name": "dialog_ci_filter01_all"
-                }
-            ]
-        },
-        "title_christmasgacha": {
-            "id": 81,
-            "categories": [
-                {
-                    "id": 1,
-                    "name": "dialog_ci_filter01_all"
-                }
-            ]
-        },
-        "TITLE_EASTERGACHA": {
-            "id": 82,
+        "title_SummerGacha": {
+            "id": 130,
             "categories": [
                 {
                     "id": 1,

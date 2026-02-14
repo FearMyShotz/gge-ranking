@@ -442,17 +442,8 @@
                 }
             ]
         },
-        "event_title_132": {
-            "id": 86,
-            "categories": [
-                {
-                    "id": 1,
-                    "name": "dialog_ci_filter01_all"
-                }
-            ]
-        },
-        "event_title_134": {
-            "id": 87,
+        "event_title_135": {
+            "id": 88,
             "categories": [
                 {
                     "id": 1,

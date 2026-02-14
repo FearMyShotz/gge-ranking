@@ -1,7 +1,7 @@
 const app = Vue.createApp({
     data() {
         return {
-            proxy: "https://sheltered-everglades-24913.fly.dev/",
+            proxy: "https://cors-buster.fly.dev/",
             languages: [],
             servers: {},
             events: {},

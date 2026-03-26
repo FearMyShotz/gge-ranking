@@ -1,3 +1,5 @@
+const supportsArrayAt = typeof Array.prototype.at === 'function';
+
 const app = Vue.createApp({
     data() {
         return {
@@ -454,7 +456,7 @@ const app = Vue.createApp({
             if (!keys.length) {
                 return '';
             }
-            return typeof keys.at === 'function' ? keys.at(-1) : keys[keys.length - 1];
+            return supportsArrayAt ? keys.at(-1) : keys[keys.length - 1];
         },
 
         currentEvent() {

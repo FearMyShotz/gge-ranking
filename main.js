@@ -446,7 +446,10 @@ const app = Vue.createApp({
 
         defaultEventName() {
             const keys = Object.keys(this.eventsList);
-            return keys[keys.length - 1] ?? keys[0];
+            if (keys.length === 0) {
+                return this.current_event_name ?? '';
+            }
+            return keys[keys.length - 1];
         },
 
         currentEvent() {

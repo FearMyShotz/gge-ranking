@@ -445,7 +445,11 @@ const app = Vue.createApp({
             return this.events[this.alliance_ranking ? "alliance" : "player"] ?? {};
         },
 
-        // Default to the last event so the newest option is preselected.
+        /**
+         * Returns the last event so the newest option is preselected.
+         * Falls back to an empty string when no events are available.
+         * Uses Array.prototype.at when available to stay compatible without a build step.
+         */
         defaultEventName() {
             const keys = Object.keys(this.eventsList);
             if (!keys.length) {

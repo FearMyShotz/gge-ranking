@@ -23,7 +23,7 @@ const app = Vue.createApp({
     },
 
     async mounted() {
-        this.darkMode = localStorage.getItem('darkMode') === 'false' ? true : false;
+        this.darkMode = localStorage.getItem('darkMode') !== 'false';
         this.applyTheme();
 
         await this.getLanguages();

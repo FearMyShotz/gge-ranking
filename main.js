@@ -19,6 +19,7 @@ const app = Vue.createApp({
             alliance_event: null,
             alliance_ranking: !!window.sessionStorage.getItem('alliance') ?? false,
             darkMode: true,
+            _supportsArrayAt: typeof Array.prototype.at === 'function',
         }
     },
 
@@ -48,7 +49,7 @@ const app = Vue.createApp({
         const response = await fetch("events.json");
         this.events = await response.json();
         if (!Object.keys(this.eventsList).includes(this.current_event_name)) {
-            this.current_event_name = Object.keys(this.eventsList)[0];
+            this.current_event_name = this.defaultEventName;
             this.current_category_index = 0;
             this.current_search = 1;
         }
@@ -265,7 +266,7 @@ const app = Vue.createApp({
                 this.current_event_name = player_to_alliance[0 + this.alliance_ranking];
             }
             else {
-                this.current_event_name = Object.keys(this.eventsList)[0];
+                this.current_event_name = this.defaultEventName;
             }
             this.current_category_index = 0;
             this.current_search = 1;
@@ -279,7 +280,7 @@ const app = Vue.createApp({
                 this.current_event_name = player_to_alliance[0 + this.alliance_ranking];
             }
             else {
-                this.current_event_name = Object.keys(this.eventsList)[0];
+                this.current_event_name = this.defaultEventName;
             }
             this.current_search = 1;
             this.current_category_index = -1;
@@ -442,6 +443,20 @@ const app = Vue.createApp({
     computed: {
         eventsList() {
             return this.events[this.alliance_ranking ? "alliance" : "player"] ?? {};
+        },
+
+        /**
+         * Computed property that returns the last event so the newest option is preselected.
+         * Falls back to an empty string when no events are available.
+         * Uses Array.prototype.at when available to stay compatible without a build step.
+         * Vue caches this computed value and only recomputes when eventsList changes.
+         */
+        defaultEventName() {
+            const keys = Object.keys(this.eventsList);
+            if (!keys.length) {
+                return '';
+            }
+            return this._supportsArrayAt ? keys.at(-1) : keys[keys.length - 1];
         },
 
         currentEvent() {

@@ -454,8 +454,10 @@ const app = Vue.createApp({
             if (!keys.length) {
                 return '';
             }
-            const supportsArrayAt = typeof Array.prototype.at === 'function';
-            return supportsArrayAt ? keys.at(-1) : keys[keys.length - 1];
+            if (this._supportsArrayAt === undefined) {
+                this._supportsArrayAt = typeof Array.prototype.at === 'function';
+            }
+            return this._supportsArrayAt ? keys.at(-1) : keys[keys.length - 1];
         },
 
         currentEvent() {

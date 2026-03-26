@@ -48,7 +48,7 @@ const app = Vue.createApp({
         const response = await fetch("events.json");
         this.events = await response.json();
         if (!Object.keys(this.eventsList).includes(this.current_event_name)) {
-            this.current_event_name = Object.keys(this.eventsList)[0];
+            this.current_event_name = this.defaultEventName;
             this.current_category_index = 0;
             this.current_search = 1;
         }
@@ -265,7 +265,7 @@ const app = Vue.createApp({
                 this.current_event_name = player_to_alliance[0 + this.alliance_ranking];
             }
             else {
-                this.current_event_name = Object.keys(this.eventsList)[0];
+                this.current_event_name = this.defaultEventName;
             }
             this.current_category_index = 0;
             this.current_search = 1;
@@ -279,7 +279,7 @@ const app = Vue.createApp({
                 this.current_event_name = player_to_alliance[0 + this.alliance_ranking];
             }
             else {
-                this.current_event_name = Object.keys(this.eventsList)[0];
+                this.current_event_name = this.defaultEventName;
             }
             this.current_search = 1;
             this.current_category_index = -1;
@@ -442,6 +442,11 @@ const app = Vue.createApp({
     computed: {
         eventsList() {
             return this.events[this.alliance_ranking ? "alliance" : "player"] ?? {};
+        },
+
+        defaultEventName() {
+            const keys = Object.keys(this.eventsList);
+            return keys[keys.length - 1] ?? '';
         },
 
         currentEvent() {

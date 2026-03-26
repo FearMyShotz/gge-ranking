@@ -19,6 +19,7 @@ const app = Vue.createApp({
             alliance_event: null,
             alliance_ranking: !!window.sessionStorage.getItem('alliance') ?? false,
             darkMode: true,
+            _supportsArrayAt: typeof Array.prototype.at === 'function',
         }
     },
 
@@ -448,14 +449,12 @@ const app = Vue.createApp({
          * Computed property that returns the last event so the newest option is preselected.
          * Falls back to an empty string when no events are available.
          * Uses Array.prototype.at when available to stay compatible without a build step.
+         * Vue caches this computed value and only recomputes when eventsList changes.
          */
         defaultEventName() {
             const keys = Object.keys(this.eventsList);
             if (!keys.length) {
                 return '';
-            }
-            if (this._supportsArrayAt === undefined) {
-                this._supportsArrayAt = typeof Array.prototype.at === 'function';
             }
             return this._supportsArrayAt ? keys.at(-1) : keys[keys.length - 1];
         },

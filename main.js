@@ -448,7 +448,7 @@ const app = Vue.createApp({
         // Default to the last event so the newest option is preselected.
         defaultEventName() {
             const keys = Object.keys(this.eventsList);
-            // Use length-based access instead of Array.prototype.at for environments without ES2022 support.
+            // Use length-based access to keep this untranspiled page compatible with older browsers that lack Array.prototype.at.
             return keys.length ? keys[keys.length - 1] : '';
         },
 

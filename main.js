@@ -1,5 +1,3 @@
-const supportsArrayAt = typeof Array.prototype.at === 'function';
-
 const app = Vue.createApp({
     data() {
         return {
@@ -447,7 +445,7 @@ const app = Vue.createApp({
         },
 
         /**
-         * Returns the last event so the newest option is preselected.
+         * Computed property that returns the last event so the newest option is preselected.
          * Falls back to an empty string when no events are available.
          * Uses Array.prototype.at when available to stay compatible without a build step.
          */
@@ -456,6 +454,7 @@ const app = Vue.createApp({
             if (!keys.length) {
                 return '';
             }
+            const supportsArrayAt = typeof Array.prototype.at === 'function';
             return supportsArrayAt ? keys.at(-1) : keys[keys.length - 1];
         },
 

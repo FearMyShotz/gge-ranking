@@ -48,7 +48,7 @@ const app = Vue.createApp({
         const response = await fetch("events.json");
         this.events = await response.json();
         if (!Object.keys(this.eventsList).includes(this.current_event_name)) {
-            const fallbackEvent = this.fallbackEventName();
+            const fallbackEvent = this.defaultEventName;
             this.current_event_name = fallbackEvent;
             this.current_category_index = 0;
             this.current_search = 1;
@@ -266,7 +266,7 @@ const app = Vue.createApp({
                 this.current_event_name = player_to_alliance[0 + this.alliance_ranking];
             }
             else {
-                this.current_event_name = this.fallbackEventName();
+                this.current_event_name = this.defaultEventName;
             }
             this.current_category_index = 0;
             this.current_search = 1;
@@ -280,7 +280,7 @@ const app = Vue.createApp({
                 this.current_event_name = player_to_alliance[0 + this.alliance_ranking];
             }
             else {
-                this.current_event_name = this.fallbackEventName();
+                this.current_event_name = this.defaultEventName;
             }
             this.current_search = 1;
             this.current_category_index = -1;
@@ -437,10 +437,6 @@ const app = Vue.createApp({
 
         nbMedals(player, type) {
             return player[this.offset(2 + this.alliance_ranking)]?.KLMO?.find(medal => medal[0] == type)?.[1] ?? 0;
-        },
-
-        fallbackEventName() {
-            return this.defaultEventName ?? '';
         }
     },
 
@@ -451,7 +447,7 @@ const app = Vue.createApp({
 
         defaultEventName() {
             const keys = Object.keys(this.eventsList);
-            return keys.length ? keys[keys.length - 1] : null;
+            return keys.length ? keys[keys.length - 1] : '';
         },
 
         currentEvent() {

@@ -1,0 +1,19 @@
+{
+    "server": "EmpireEx_2",
+    "officialClientSha256": "7dcf6ca6437788f524994a2ce49fbb0394a6c1d7792bd1e79b718d20d65c15cd",
+    "officialClientAsset": "https://empire-html5.goodgamestudios.com/default/dll/ggs.dll.0062a820ff12c6e44e08.js",
+    "clientSourceRepository": "gge-services/client-source",
+    "clientSourceCommit": "0efcbfc7867f51b6feb2c14d458bb45241cd78ab",
+    "clientSourceMatchesOfficial": true,
+    "active": {
+        "type": "HALLOWEEN_GACHA",
+        "eventId": 132,
+        "rankingId": 86,
+        "key": "event_title_132"
+    },
+    "availableRankingIds": [
+        80,
+        86
+    ],
+    "checkedAt": "2026-10-31T12:38:25+00:00"
+}

@@ -5,6 +5,7 @@ const app = Vue.createApp({
             languages: [],
             servers: {},
             events: {},
+            active_gacha: null,
             texts: {},
             players: [],
             current_language: 'de',
@@ -48,6 +49,8 @@ const app = Vue.createApp({
         }
         const response = await fetch("events.json");
         this.events = await response.json();
+        await this.loadActiveGacha();
+        await this.syncActiveGacha();
         if (!Object.keys(this.eventsList).includes(this.current_event_name)) {
             this.current_event_name = this.defaultEventName;
             this.current_category_index = 0;
@@ -82,7 +85,7 @@ const app = Vue.createApp({
             <option v-for="(server, key) in this.servers" :value="key" :key="key">{{ this.texts[server.name] + " " + server.id }}</option>
         </select>
         <select id="events" v-model="this.current_event_name" @change="changeEvent">
-            <option v-for="(event, key) in this.eventsList" :value="key" :key="key">{{ this.texts[key] }}</option>
+            <option v-for="(event, key) in this.eventsList" :value="key" :key="key">{{ this.texts[key] ?? key }}</option>
         </select>
         <div id="content">
             <div id="navigate_buttons">
@@ -159,6 +162,76 @@ const app = Vue.createApp({
     `,
 
     methods: {
+        async loadActiveGacha() {
+            try {
+                const response = await fetch('active-gacha.json', {cache: 'no-store'});
+                if (response.ok) {
+                    this.active_gacha = await response.json();
+                }
+            } catch (error) {
+                console.warn('Active Gacha manifest unavailable', error);
+            }
+        },
+
+        async syncActiveGacha() {
+            if (this.alliance_ranking) {
+                return;
+            }
+            const candidates = Object.entries(this.events.player ?? {})
+                .filter(([, value]) => value.gacha === true)
+                .map(([key, value]) => ({key, rankingId: value.id}));
+            let selected = null;
+            const manifest = this.active_gacha;
+            const checkedAt = Date.parse(manifest?.checkedAt ?? '');
+            if (manifest?.server === this.current_server_header
+                && Date.now() - checkedAt >= 0
+                && Date.now() - checkedAt < 12 * 60 * 60 * 1000
+                && candidates.some(item => item.key === manifest.active?.key && item.rankingId === manifest.active?.rankingId)) {
+                selected = manifest.active;
+            } else {
+                const results = await Promise.all(candidates.map(async item => {
+                    try {
+                        const payload = '%22LT%22:' + item.rankingId + ',%22LID%22:1,%22SV%22:%221%22';
+                        const response = await fetch('https://empire-api.fly.dev/' + encodeURIComponent(this.current_server_header) + '/hgh/' + payload);
+                        if (response.status === 400) {
+                            return null;
+                        }
+                        if (!response.ok) {
+                            return undefined;
+                        }
+                        const data = await response.json();
+                        return String(data.return_code) === '0'
+                            && Number(data.content?.LT) === item.rankingId
+                            && Array.isArray(data.content?.L)
+                            && data.content.L.length > 0
+                            && Number(data.content.LR) > 0 ? item : null;
+                    } catch (error) {
+                        return undefined;
+                    }
+                }));
+                if (results.some(result => result === undefined)) {
+                    return;
+                }
+                const available = results.filter(Boolean);
+                const seasonal = available.filter(item => item.key !== 'dialog_title_gachadeco2x2');
+                if (seasonal.length === 1) {
+                    selected = seasonal[0];
+                } else if (seasonal.length === 0) {
+                    selected = available.find(item => item.key === 'dialog_title_gachadeco2x2') ?? null;
+                }
+            }
+            if (!selected || !this.eventsList[selected.key]) {
+                return;
+            }
+            const marker = this.current_server_header + ':' + selected.rankingId;
+            if (sessionStorage.getItem('activeGachaMarker') !== marker || !this.eventsList[this.current_event_name]) {
+                this.current_event_name = selected.key;
+                this.current_category_index = 0;
+                this.current_search = 1;
+            }
+            sessionStorage.setItem('activeGachaMarker', marker);
+        },
+
         async getLanguages() {
             let languages_file = await fetch (`${this.proxy}https://empire-html5.goodgamestudios.com/config/languages/version.json`)
             languages_file = await languages_file.json();
@@ -255,6 +328,7 @@ const app = Vue.createApp({
         },
 
         async changeServer() {
+            await this.syncActiveGacha();
             this.current_search = 1;
             await this.getRankingsByRank();
         },
@@ -455,6 +529,13 @@ const app = Vue.createApp({
             const keys = Object.keys(this.eventsList);
             if (!keys.length) {
                 return '';
+            }
+            const activeKey = this.active_gacha?.server === this.current_server_header ? this.active_gacha.active?.key : null;
+            if (activeKey && this.eventsList[activeKey]) {
+                return activeKey;
+            }
+            if (this.eventsList.dialog_title_gachadeco2x2) {
+                return 'dialog_title_gachadeco2x2';
             }
             return this._supportsArrayAt ? keys.at(-1) : keys[keys.length - 1];
         },

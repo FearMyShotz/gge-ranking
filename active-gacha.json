@@ -6,14 +6,13 @@
     "clientSourceCommit": "0efcbfc7867f51b6feb2c14d458bb45241cd78ab",
     "clientSourceMatchesOfficial": true,
     "active": {
-        "type": "HALLOWEEN_GACHA",
-        "eventId": 132,
-        "rankingId": 86,
-        "key": "event_title_132"
+        "type": "DECO_GACHA",
+        "eventId": 126,
+        "rankingId": 80,
+        "key": "dialog_title_gachadeco2x2"
     },
     "availableRankingIds": [
-        80,
-        86
+        80
     ],
-    "checkedAt": "2026-10-31T12:38:25+00:00"
+    "checkedAt": "2026-11-05T20:02:52+00:00"
 }

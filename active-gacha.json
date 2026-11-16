@@ -3,8 +3,8 @@
     "officialClientSha256": "1facce275f804edbc396fc08427e9e05529d0bcd07a8c1c9bfab04aed9169822",
     "officialClientAsset": "https://empire-html5.goodgamestudios.com/default/dll/ggs.dll.1510ece3613739fd91ea.js",
     "clientSourceRepository": "gge-services/client-source",
-    "clientSourceCommit": "0efcbfc7867f51b6feb2c14d458bb45241cd78ab",
-    "clientSourceMatchesOfficial": true,
+    "clientSourceCommit": null,
+    "clientSourceMatchesOfficial": null,
     "active": {
         "type": "DECO_GACHA",
         "eventId": 126,
@@ -14,5 +14,5 @@
     "availableRankingIds": [
         80
     ],
-    "checkedAt": "2026-11-10T19:49:51+00:00"
+    "checkedAt": "2026-11-16T22:15:02+00:00"
 }

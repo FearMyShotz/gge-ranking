@@ -1,10 +1,10 @@
 {
     "server": "EmpireEx_2",
-    "officialClientSha256": "1facce275f804edbc396fc08427e9e05529d0bcd07a8c1c9bfab04aed9169822",
-    "officialClientAsset": "https://empire-html5.goodgamestudios.com/default/dll/ggs.dll.1510ece3613739fd91ea.js",
+    "officialClientSha256": "9c0e90d10dbe4c965fb6cec16c815bca8d78e13c19a4425c4710fdcfe86edac8",
+    "officialClientAsset": "https://empire-html5.goodgamestudios.com/default/dll/ggs.dll.b68ed9c3af90ea1e396d.js",
     "clientSourceRepository": "gge-services/client-source",
-    "clientSourceCommit": null,
-    "clientSourceMatchesOfficial": null,
+    "clientSourceCommit": "0efcbfc7867f51b6feb2c14d458bb45241cd78ab",
+    "clientSourceMatchesOfficial": false,
     "active": {
         "type": "DECO_GACHA",
         "eventId": 126,
@@ -14,5 +14,5 @@
     "availableRankingIds": [
         80
     ],
-    "checkedAt": "2026-11-16T22:15:02+00:00"
+    "checkedAt": "2026-11-17T21:01:50+00:00"
 }

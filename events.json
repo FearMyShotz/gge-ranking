@@ -434,8 +434,8 @@
             ]
         },
         "dialog_title_gachadeco2x2": {
-            "id": 80,
             "gacha": true,
+            "id": 80,
             "categories": [
                 {
                     "id": 1,
@@ -444,8 +444,8 @@
             ]
         },
         "event_title_127": {
-            "id": 81,
             "gacha": true,
+            "id": 81,
             "categories": [
                 {
                     "id": 1,
@@ -454,8 +454,8 @@
             ]
         },
         "event_title_128": {
-            "id": 82,
             "gacha": true,
+            "id": 82,
             "categories": [
                 {
                     "id": 1,
@@ -464,8 +464,8 @@
             ]
         },
         "event_title_130": {
-            "id": 83,
             "gacha": true,
+            "id": 83,
             "categories": [
                 {
                     "id": 1,
@@ -474,8 +474,8 @@
             ]
         },
         "event_title_131": {
-            "id": 85,
             "gacha": true,
+            "id": 85,
             "categories": [
                 {
                     "id": 1,
@@ -484,8 +484,8 @@
             ]
         },
         "event_title_132": {
-            "id": 86,
             "gacha": true,
+            "id": 86,
             "categories": [
                 {
                     "id": 1,
@@ -494,8 +494,8 @@
             ]
         },
         "event_title_134": {
-            "id": 87,
             "gacha": true,
+            "id": 87,
             "categories": [
                 {
                     "id": 1,
@@ -504,7 +504,17 @@
             ]
         },
         "event_title_135": {
+            "gacha": true,
             "id": 88,
+            "categories": [
+                {
+                    "id": 1,
+                    "name": "dialog_ci_filter01_all"
+                }
+            ]
+        },
+        "event_title_139": {
+            "id": 92,
             "gacha": true,
             "categories": [
                 {

@@ -6,13 +6,14 @@
     "clientSourceCommit": "0efcbfc7867f51b6feb2c14d458bb45241cd78ab",
     "clientSourceMatchesOfficial": false,
     "active": {
-        "type": "DECO_GACHA",
-        "eventId": 126,
-        "rankingId": 80,
-        "key": "dialog_title_gachadeco2x2"
+        "type": "BLACK_FRIDAY_GACHA",
+        "eventId": 134,
+        "rankingId": 87,
+        "key": "event_title_134"
     },
     "availableRankingIds": [
-        80
+        80,
+        87
     ],
-    "checkedAt": "2026-11-17T21:01:50+00:00"
+    "checkedAt": "2026-11-19T20:44:54+00:00"
 }

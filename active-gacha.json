@@ -3,8 +3,8 @@
     "officialClientSha256": "9c0e90d10dbe4c965fb6cec16c815bca8d78e13c19a4425c4710fdcfe86edac8",
     "officialClientAsset": "https://empire-html5.goodgamestudios.com/default/dll/ggs.dll.b68ed9c3af90ea1e396d.js",
     "clientSourceRepository": "gge-services/client-source",
-    "clientSourceCommit": "0efcbfc7867f51b6feb2c14d458bb45241cd78ab",
-    "clientSourceMatchesOfficial": false,
+    "clientSourceCommit": null,
+    "clientSourceMatchesOfficial": null,
     "active": {
         "type": "BLACK_FRIDAY_GACHA",
         "eventId": 134,
@@ -15,5 +15,5 @@
         80,
         87
     ],
-    "checkedAt": "2026-11-19T20:44:54+00:00"
+    "checkedAt": "2026-11-20T07:27:07+00:00"
 }

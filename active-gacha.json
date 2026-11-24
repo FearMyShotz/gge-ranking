@@ -1,18 +1,19 @@
 {
     "server": "EmpireEx_2",
-    "officialClientSha256": "48e2938941b96da9d3badd8bf4a40a790e615a8b6657cf6294cec17803ac55fd",
-    "officialClientAsset": "https://empire-html5.goodgamestudios.com/default/dll/ggs.dll.94613e03c7b319c5f63d.js",
+    "officialClientSha256": "e1b014c56f477c6fe678ed3c612bb6eb4098d7a76aa932be4e8f8a47e8bb78aa",
+    "officialClientAsset": "https://empire-html5.goodgamestudios.com/default/dll/ggs.dll.b0936cf830f96901fca8.js",
     "clientSourceRepository": "gge-services/client-source",
-    "clientSourceCommit": "0efcbfc7867f51b6feb2c14d458bb45241cd78ab",
-    "clientSourceMatchesOfficial": false,
+    "clientSourceCommit": null,
+    "clientSourceMatchesOfficial": null,
     "active": {
-        "type": "DECO_GACHA",
-        "eventId": 126,
-        "rankingId": 80,
-        "key": "dialog_title_gachadeco2x2"
+        "type": "BLACK_FRIDAY_GACHA",
+        "eventId": 134,
+        "rankingId": 87,
+        "key": "event_title_134"
     },
     "availableRankingIds": [
-        80
+        80,
+        87
     ],
-    "checkedAt": "2026-11-24T10:01:52+00:00"
+    "checkedAt": "2026-11-24T22:33:30+00:00"
 }
